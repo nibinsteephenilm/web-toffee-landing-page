@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Button from "./Button";
 export default function PurchaseCard({ count, cost, recommended }) {
     return (
-        <Container recommended={recommended}>
+        <Container $recommended={recommended}>
             <p className="sitecount">
                 {count} <span>Recommended</span>
             </p>
@@ -22,8 +22,10 @@ export default function PurchaseCard({ count, cost, recommended }) {
     );
 }
 const ButtonContainer = styled.div`
-    
-`
+    button.button {
+        width: 100%;
+    }
+`;
 const Container = styled.div`
     border-radius: 8px;
     border: 1px solid rgba(116, 116, 116, 0.4);
@@ -31,10 +33,16 @@ const Container = styled.div`
     padding: 36px;
     flex: 1;
     cursor: pointer;
-    transition: .25s;
+    transition: 0.25s;
+    @media all and (max-width: 980px) {
+        padding: 15px;
+    }
+    @media all and (max-width: 640px) {
+        width: 75%;
+    }
     &:hover {
         background-color: #fff;
-        border: 1px solid #FFF;
+        border: 1px solid #fff;
         transform: scale(1.05);
         .sitecount {
             color: #000;
@@ -45,8 +53,8 @@ const Container = styled.div`
                 color: #000;
             }
         }
-        ${ButtonContainer}{
-            background-color: #007FFF;
+        ${ButtonContainer} {
+            background-color: #007fff;
             color: blue;
         }
     }
@@ -59,15 +67,30 @@ const Container = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 16px;
+        @media all and (max-width: 1400px) {
+            font-size: 22px;
+        }
+        @media all and (max-width: 1080px) {
+            font-size: 18px;
+        }
+        @media all and (max-width: 768px) {
+            font-size: 16px;
+        }
+
         span {
             display: ${(props) =>
-                props.recommended ? props.recommended : "none"};
+                props.$recommended ? props.$recommended : "none"};
             font-size: 14px;
             color: #007fff;
             padding: 10px 18px;
             border-radius: 4px;
             border: 1px solid var(--Prm, #007fff);
+            @media all and (max-width: 1400px) {
+                padding: 5px 15px;
+            }
+            @media all and (max-width: 1280px) {
+                display: none;
+            }
         }
     }
     .cost {
@@ -78,10 +101,25 @@ const Container = styled.div`
         padding-bottom: 24px;
         border-bottom: 0.5px solid #747474;
         margin-bottom: 28px;
+        @media all and (max-width: 1400px) {
+            font-size: 35px;
+        }
+        @media all and (max-width: 1080px) {
+            font-size: 27px;
+        }
+        @media all and (max-width: 768px) {
+            font-size: 22px;
+        }
         span {
             color: #eee;
             font-size: 18px;
             font-family: "nunito-medium";
+            @media all and (max-width: 1400px) {
+                font-size: 16px;
+            }
+            @media all and (max-width: 1080px) {
+                font-size: 14px;
+            }
         }
     }
 `;

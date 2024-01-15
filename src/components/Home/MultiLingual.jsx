@@ -56,7 +56,7 @@ export default function MultiLingual() {
                                 text={item}
                                 fontcolor="#01112D"
                                 fontSize="20px"
-                                fontfamily="nunito-medium"
+                                fontFamily="nunito-medium"
                                 containerpadding="20px 17px"
                                 containerwidth="575px"
                                 containerbackground="#F2F6FC"
@@ -74,40 +74,116 @@ const Container = styled.div`
     padding: 100px 0;
     /* height: 100vh;
     overflow: scroll; */
+    @media all and (max-width: 480px) {
+        padding: 50px 0;
+    }
 `;
 const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     position: relative;
+    flex-wrap: wrap;
+
     .left {
         width: 45%;
         position: sticky;
         top: 200px;
         left: 0;
         height: max-content;
-
+        @media all and (max-width: 768px) {
+            width: 100%;
+            position: unset;
+        }
         .headingContainer {
             margin-bottom: 48px;
+            @media all and (max-width: 480px) {
+                margin-bottom: 22px;
+            }
+            div.headline {
+                p {
+                    @media all and (max-width: 1280px) {
+                        font-size: 30px;
+                        line-height: 40px;
+                    }
+                    @media all and (max-width: 480px) {
+                        font-size: 24px;
+                        line-height: 30px;
+                    }
+                    span {
+                        @media all and (max-width: 1280px) {
+                            font-size: 30px;
+                            line-height: 40px;
+                        }
+                        @media all and (max-width: 480px) {
+                            font-size: 24px;
+                            line-height: 30px;
+                        }
+                    }
+                }
+            }
         }
         .firstParagraph {
-            margin-top: 32px;
             color: #747474;
             font-size: 17px;
-            margin-bottom: 32px;
+            margin: 32px 0;
+            @media all and (max-width: 1280px) {
+                font-size: 15px;
+            }
+            @media all and (max-width: 480px) {
+                margin: 18px 0;
+            }
         }
         .lastParagraph {
             color: #747474;
             margin-bottom: 64px;
             font-size: 17px;
+            @media all and (max-width: 1280px) {
+                font-size: 15px;
+                margin-bottom: 50px;
+            }
+            @media all and (max-width: 480px) {
+                margin-bottom: 26px;
+            }
         }
     }
     .right {
         display: flex;
         flex-direction: column;
         gap: 20px;
+        width: 45%;
+        @media all and (max-width: 768px) {
+            width: 100%;
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media all and (max-width: 480px) {
+            grid-template-columns: repeat(1, 1fr);
+            height: 300px;
+            overflow: scroll;
+        }
+
         .eachSpecification {
-            border: 1px solid #FFF;
+            border: 1px solid #fff;
             border-radius: 8px;
+
+            div.eachspec {
+                @media all and (max-width: 1280px) {
+                    width: 100%;
+                }
+                @media all and (max-width: 768px) {
+                    padding: 5px 10px;
+                    border-radius: 4px;
+                }
+                .text {
+                    @media all and (max-width: 1280px) {
+                        font-size: 18px;
+                    }
+                    @media all and (max-width: 768px) {
+                        font-size: 16px;
+                    }
+                }
+            }
         }
     }
 `;

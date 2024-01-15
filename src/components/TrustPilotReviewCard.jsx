@@ -41,9 +41,11 @@ const Container = styled.div`
     background: #fcfeff;
     padding: 30px;
     position: relative;
-    width: 420px;
     margin-right: 30px;
     transition: 0.25s;
+    @media all and (max-width: 1280px) {
+        padding: 20px;
+        }
     &::after {
         content: url("/images/Trust-Pilot-right-top.svg");
         position: absolute;
@@ -60,13 +62,13 @@ const Container = styled.div`
             color: #fbfbfb;
         }
         .description {
-            color: #E1E1E1;
+            color: #e1e1e1;
         }
         .user {
             .userDetails {
                 .nameDate {
                     .name {
-                        color: #EEE;
+                        color: #eee;
                     }
                 }
             }
@@ -84,17 +86,35 @@ const Container = styled.div`
         border-radius: 2px;
         border: 1px solid #3283ff;
         margin-bottom: 32px;
+        @media all and (max-width: 1280px) {
+            margin-bottom: 20px;
+        }
+        @media all and (max-width: 1080px) {
+            width: 40px;
+            padding: 10px;
+        }
+        
+        
     }
     .title {
         color: #747474;
         font-size: 18px;
         font-family: "nunito-semibold";
         margin-bottom: 8px;
+        @media all and (max-width: 1080px) {
+            font-size: 17px;
+        }
     }
     .description {
         color: #747474;
         font-size: 16px;
         margin-bottom: 14px;
+        @media all and (max-width: 1280px) {
+            font-size: 15px;
+        }
+        @media all and (max-width: 1080px) {
+            font-size: 14px;
+        }
     }
     .user {
         display: flex;
@@ -120,18 +140,38 @@ const Container = styled.div`
                     color: #0a0a0a;
                     font-size: 18px;
                     font-family: "nunito-medium";
+                    @media all and (max-width: 1280px) {
+                        font-size: 17px;
+                    }
                 }
                 .date {
                     color: #747474;
                     font-size: 16px;
+                    @media all and (max-width: 1280px) {
+                        font-size: 14px;
+                    }
                 }
             }
         }
 
         .navyBlueStar {
+            .starWidth {
+                .starFrame {
+                    @media all and (max-width: 1280px) {
+                        width: 15px;
+                    }
+                }
+            }
         }
         .whiteStar {
             display: none;
+            .starWidth {
+                .starFrame {
+                    @media all and (max-width: 1280px) {
+                        width: 15px;
+                    }
+                }
+            }
         }
     }
 `;

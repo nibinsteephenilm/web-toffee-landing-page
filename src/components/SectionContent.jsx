@@ -28,21 +28,21 @@ export default function SectionContent({
     leftrightcolor,
     marginbottom,
     paddingbottom,
-    gdprdisplay = false
+    gdprdisplay = 'false',
 }) {
     return (
         <Container
             className="background"
-            sectionbackground={sectionbackground}
-            marginbottom={marginbottom}
-            paddingbottom={paddingbottom}
+            $sectionbackground={sectionbackground}
+            $marginbottom={marginbottom}
+            $paddingbottom={paddingbottom}
         >
             <Wrapper
                 className="wrapper"
-                paragraphcolor={paragraphcolor}
-                flip={flip}
-                box2={box2}
-                gdprdisplay={gdprdisplay}
+                $paragraphcolor={paragraphcolor}
+                $flip={flip}
+                $box2={box2}
+                $gdprdisplay={gdprdisplay}
             >
                 <div className="left">
                     <div className="headingContainer">
@@ -81,21 +81,21 @@ export default function SectionContent({
                                     text="Who gave consent – using a masked IP and the user ID if the user is logged in"
                                     fontcolor="#747474"
                                     fontSize="16px"
-                                    fontfamily="nunito-semibold"
+                                    fontFamily="nunito-semibold"
                                     gap="7px"
                                 />
                                 <Specifications
                                     text="The time of consent – using a date and timestamp"
                                     fontcolor="#747474"
                                     fontSize="16px"
-                                    fontfamily="nunito-semibold"
+                                    fontFamily="nunito-semibold"
                                     gap="7px"
                                 />
                                 <Specifications
                                     text="The consent provided to each category of the cookies"
                                     fontcolor="#747474"
                                     fontSize="16px"
-                                    fontfamily="nunito-semibold"
+                                    fontFamily="nunito-semibold"
                                     gap="7px"
                                 />
                             </div>
@@ -124,67 +124,154 @@ export default function SectionContent({
 
 const Container = styled.div`
     background-color: ${(props) =>
-        props.sectionbackground && props.sectionbackground};
+        props.$sectionbackground && props.$sectionbackground};
     padding: 100px 0
-        ${(props) => (props.paddingbottom ? props.paddingbottom : "50px")} 0;
+        ${(props) => (props.$paddingbottom ? props.$paddingbottom : "50px")} 0;
     margin-bottom: ${(props) =>
-        props.marginbottom ? props.marginbottom : "120px"};
+        props.$marginbottom ? props.$marginbottom : "120px"};
+    @media all and (max-width: 980px) {
+        margin-bottom: 50px;
+        padding: 50px 0;
+    }
+    @media all and (max-width: 640px) {
+                    margin-bottom: 0;
+                }
 `;
 const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    flex-direction: ${(props) => props.flip && props.flip};
+    flex-direction: ${(props) => props.$flip && props.$flip};
+    flex-wrap: wrap;
     .left {
         width: 48%;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @media all and (max-width: 980px) {
+            width: 100%;
+        }
         .headingContainer {
             margin-bottom: 48px;
+            @media all and (max-width: 1280px) {
+                margin-bottom: 35px;
+            }
+            @media all and (max-width: 640px) {
+                margin-bottom: 16px;
+            }
+            div.headline {
+                p {
+                    @media all and (max-width: 1280px) {
+                        font-size: 30px;
+                        line-height: 43px;
+                    }
+                    @media all and (max-width: 1080px) {
+                        font-size: 27px;
+                        line-height: 37px;
+                    }
+                    @media all and (max-width: 480px) {
+                        font-size: 24px;
+                        line-height: 30px;
+                    }
+                    span {
+                        @media all and (max-width: 1280px) {
+                            font-size: 30px;
+                            line-height: 43px;
+                        }
+                        @media all and (max-width: 1080px) {
+                            font-size: 27px;
+                            line-height: 37px;
+                        }
+                        @media all and (max-width: 480px) {
+                            font-size: 24px;
+                            line-height: 30px;
+                        }
+                    }
+                }
+            }
         }
+        div.boxMatter {
+            p {
+                @media all and (max-width: 1280px) {
+                    font-size: 16px;
+                }
+                @media all and (max-width: 1080px) {
+                    font-size: 15px;
+                }
+            }
+        }
+
         .firstParagraph {
             margin-top: 32px;
+            @media all and (max-width: 1280px) {
+                margin-top: 26px;
+            }
+            @media all and (max-width: 640px) {
+                margin-top: 16px;
+            }
         }
         .firstParagraph,
         .secondParagraph {
             color: ${(props) =>
-                props.paragraphcolor ? props.paragraphcolor : "#747474"};
+                props.$paragraphcolor ? props.$paragraphcolor : "#747474"};
             font-size: 17px;
             margin-bottom: 32px;
+            @media all and (max-width: 1280px) {
+                font-size: 15px;
+                margin-bottom: 16px;
+            }
         }
         .secondParagraph {
-            display: ${props=>props.gdprdisplay ? "none" : "block"};
+            display: ${(props) => (props.$gdprdisplay==='true' ? "none" : "block")};
         }
         .thirdParagraph {
-            display: ${props=>props.gdprdisplay ? "none" : "block"};
+            display: ${(props) => (props.$gdprdisplay==='true' ? "none" : "block")};
             color: ${(props) =>
-                props.paragraphcolor ? props.paragraphcolor : "#747474"};
+                props.$paragraphcolor ? props.$paragraphcolor : "#747474"};
             margin-bottom: ${(props) =>
-                props.box2 === "true" ? "25px" : "64px"};
+                props.$box2 === "true" ? "25px" : "64px"};
             font-size: 17px;
+            @media all and (max-width: 1280px) {
+                font-size: 15px;
+                margin-bottom: ${(props) =>
+                    props.$box2 === "true" ? "25px" : "40px"};
+            }
+            @media all and (max-width: 640px) {
+                margin-bottom: 22px;
+            }
         }
         .box2 {
-            display: ${(props) => (props.box2 === "true" ? "block" : "none")};
+            display: ${(props) => (props.$box2 === "true" ? "block" : "none")};
             margin-bottom: 30px;
         }
         .gdprPluginContainer {
             margin-bottom: 44px;
-            display: ${props=>(props.gdprdisplay ? "block" : "none")};
+            display: ${(props) => (props.$gdprdisplay==='true' ? "block" : "none")};
             .gdprPlugin {
                 border-radius: 8px;
                 border: 1px solid #ddf0ff;
                 background: #f3f9ff;
                 padding: 28px 16px;
+                @media all and (max-width: 640px) {
+                    padding: 20px 13px;
+                }
                 .gdprText {
                     color: #565656;
                     font-size: 17px;
                     font-family: "nunito-medium";
                     margin-bottom: 18px;
+                    @media all and (max-width: 640px) {
+                        font-size: 15px;
+                    }
                 }
                 .specification {
                     display: flex;
                     flex-direction: column;
                     gap: 15px;
+                    .eachspec {
+                        .text {
+                            font-size: 14px;
+                        }
+                    }
                 }
             }
             .gdprPluginText {
@@ -196,5 +283,29 @@ const Wrapper = styled.div`
     }
     .right {
         width: 45%;
+
+        display: flex;
+        align-items: center;
+        @media all and (max-width: 980px) {
+            width: 100%;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .imageFrame {
+            @media all and (max-width: 980px) {
+                width: 500px;
+                display: flex;
+                margin-top: 10px;
+            }
+            @media all and (max-width: 768px) {
+                width: 400px;
+            }
+            @media all and (max-width: 640px) {
+                width: 380px;
+            }
+            @media all and (max-width: 640px) {
+                width: 270px;
+            }
+        }
     }
 `;

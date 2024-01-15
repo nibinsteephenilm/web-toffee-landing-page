@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export default function Star({star,width}) {
     return (
-        <Container width={width}>
+        <Container width={width} className="starWidth">
                 <div className="starFrame"><img src={star} alt="Star" /></div>
                 <div className="starFrame"><img src={star} alt="Star" /></div>
                 <div className="starFrame"><img src={star} alt="Star" /></div>
